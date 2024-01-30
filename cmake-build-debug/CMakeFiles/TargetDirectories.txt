@@ -1,0 +1,3 @@
+/Users/bernu_li/CLionProjects/Terms_of_reference_for_Nikita/cmake-build-debug/CMakeFiles/Terms_of_reference_for_Nikita.dir
+/Users/bernu_li/CLionProjects/Terms_of_reference_for_Nikita/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/bernu_li/CLionProjects/Terms_of_reference_for_Nikita/cmake-build-debug/CMakeFiles/rebuild_cache.dir
