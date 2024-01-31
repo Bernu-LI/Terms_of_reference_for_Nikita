@@ -5,6 +5,8 @@
 #include <random>
 #include <ctime>
 #include <set>
+#include <complex>
+#include <string>
 
 void SoLAE(std::vector <std::vector <double>>& matrix) {
     std::mt19937 rd(std::time(nullptr));
@@ -203,16 +205,26 @@ int detnxn_calculation(std::vector <std::vector <int>>& det) {
 }
 
 void complexNumbers() {
-    std::vector <int> coefficients;
+    std::vector <int> coefficients(6);
     std::mt19937 rd(std::time(nullptr));
     std::uniform_int_distribution dist(-9, 9);
-    coefficients.push_back(dist(rd));
-    coefficients.push_back(dist(rd));
-    coefficients.push_back(coefficients[0]);
-    coefficients.push_back(-coefficients[1]);
-    coefficients.push_back(dist(rd));
-    coefficients.push_back(dist(rd));
+    for (auto& value : coefficients) {
+        while (value == 0) {
+            value = dist(rd);
+        }
+    }
+    std::cout << "conj("; coefficients[0] > 0 ? std::cout << coefficients[0] : std::cout << "(" << coefficients[0] << ")"; std::cout << " + "; coefficients[1] > 0 ? std::cout << coefficients[1] : std::cout << "(" << coefficients[1] << ")"; std::cout << "i)";
+    std::cout << " * ";
+    std::cout << "("; coefficients[2] > 0 ? std::cout << coefficients[2] : std::cout << "(" << coefficients[2] << ")"; std::cout << " + "; coefficients[3] > 0 ? std::cout << coefficients[3] : std::cout << "(" << coefficients[3] << ")"; std::cout << "i)";
+    std::cout << " / ";
+    std::cout << "("; coefficients[4] > 0 ? std::cout << coefficients[4] : std::cout << "(" << coefficients[4] << ")"; std::cout << " + "; coefficients[5] > 0 ? std::cout << coefficients[5] : std::cout << "(" << coefficients[5] << ")"; std::cout << "i)";
+    std::cout << "\n";
 
+    std::complex <double> z1(coefficients[0], coefficients[1]);
+    std::complex <double> z2(coefficients[2], coefficients[3]);
+    std::complex <double> z3(coefficients[4], coefficients[5]);
+    std::complex <double> result = std::conj(z1) * z2 / z3;
+    std::cout << result.real() << " + " << (result.imag() < 0 ? "(" + std::to_string(result.imag()) + ")" : std::to_string(result.imag())) << "i";
 }
 
 void call() {
@@ -241,4 +253,5 @@ void call() {
     std::cout << "\n\n";
 
     std::cout << "7.\n";
+    complexNumbers();
 }
